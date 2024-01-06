@@ -4,13 +4,28 @@ module.exports = {
     toField: '#to',
     phoneNumberField: '#phone',
     codeField: '#code',
+    cardNumber: '#number',
+    cardCode: '.card-second-row #code',
     // Buttons
     callATaxiButton: 'button=Call a taxi',
     phoneNumberButton: '//div[starts-with(text(), "Phone number")]',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
+    paymentMethodButton: '.pp-text',
+    addCardButton: 'div=Add card',
+    linkCardButton: 'button=Link',
+    closePaymentMethodModalButton: '.payment-picker .close-button',
+    selectSupportivePlanButton: 'div=Supportive',
+    blanketAndHandkerchiefsButton: '//span[@class="slider round"])[1]',
+    searchForNewTaxiButton: '.smart-button-main',
+    increaseIceCreamCount: 'div=counter-plus',
+    messageToTheDriverField: '#comment[value= "hi guys"]',
+    
     // Modals
     phoneNumberModal: '.modal',
+    // Misc
+    cardSignatureStrip: '.plc',
+    cardPaymentMethodIcon: 'img[alt="card"]',
     // Functions
     fillAddresses: async function(from, to) {
         const fromField = await $(this.fromField);
@@ -48,4 +63,32 @@ module.exports = {
         await codeField.setValue(code)
         await $(this.confirmButton).click()
     },
+    addPaymentMethodCard: async function() {
+        const paymentMethodButton = await $(this.paymentMethodButton);
+        await paymentMethodButton.waitForDisplayed();
+        await paymentMethodButton.click();
+
+        const addCardButton = await $(this.addCardButton);
+        await addCardButton.waitForDisplayed();
+        await addCardButton.click();
+
+        const cardNumber = await $(this.addCardButton);
+        await cardNumber.waitForDisplayed();
+        await cardNumber.setValue(1234567891234567);
+        const cardCode = await $(this.cardCode);
+        await cardCode.waitForDisplayed();
+        await cardCode.setValue(55);
+
+        const cardSignatureStrip = await $(this.cardSignatureStrip);
+        await cardSignatureStrip.waitForDisplayed();
+        await cardSignatureStrip.click();
+
+        const linkCardButton = await $(this.linkCardButton);
+        await linkCardButton.waitForDisplayed();
+        await linkCardButton.click();
+
+        const closePaymentMethodModalButton = await $(this.closePaymentMethodModalButton);
+        await closePaymentMethodModalButton.waitForDisplayed();
+        await closePaymentMethodModalButton.click();
+    }
 };
