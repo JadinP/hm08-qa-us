@@ -16,10 +16,10 @@ module.exports = {
     linkCardButton: 'button=Link',
     closePaymentMethodModalButton: '.payment-picker .close-button',
     selectSupportivePlanButton: 'div=Supportive',
-    blanketAndHandkerchiefsButton: '//span[@class="slider round"])[1]',
-    searchForNewTaxiButton: '.smart-button-main',
-    increaseIceCreamCount: 'div=counter-plus',
-    messageToTheDriverField: '#comment[value= "hi guys"]',
+    blanketAndHandkerchiefsButton: '(//div[@class="switch"]) [1]',
+    searchForNewTaxiButton: 'div.smart-button-wrapper',
+    increaseIceCreamCount: 'div.counter-plus',
+    messageToTheDriverField: 'input#comment',
     
     // Modals
     phoneNumberModal: '.modal',
@@ -72,7 +72,7 @@ module.exports = {
         await addCardButton.waitForDisplayed();
         await addCardButton.click();
 
-        const cardNumber = await $(this.addCardButton);
+        const cardNumber = await $(this.cardNumber);
         await cardNumber.waitForDisplayed();
         await cardNumber.setValue(1234567891234567);
         const cardCode = await $(this.cardCode);

@@ -1,0 +1,27 @@
+{
+
+  "version": "0.2.0",
+
+  "configurations": [
+
+    {
+
+      "name": "Run File",
+
+      "type": "node",
+
+      "request": "launch",
+
+      "cwd": "${workspaceFolder}",
+
+      "runtimeExecutable": "npm",
+
+      "args" : ["run","wdio"],
+
+      "outputCapture": "std"
+
+    }
+
+  ]
+
+}

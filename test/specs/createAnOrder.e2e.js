@@ -22,10 +22,14 @@ describe('Create an order', () => {
         await selectSupportivePlanButton.waitForDisplayed();
         await selectSupportivePlanButton.click();
 
+        await browser.pause(5000);
+
         // input phone number
         const phoneNumber = helper.getPhoneNumber("+1");
         await page.submitPhoneNumber(phoneNumber);
-        await expect(await helper.getElementByText(phoneNumber)).toBeExisting();        
+        await expect(await helper.getElementByText(phoneNumber)).toBeExisting();
+        
+        await browser.pause(5000);
 
         // Adding payment card
         await page.addPaymentMethodCard();
@@ -33,17 +37,24 @@ describe('Create an order', () => {
         const cardPaymentMethodIcon = await $(page.cardPaymentMethodIcon);
         await cardPaymentMethodIcon.waitForDisplayed();
         await expect(await $(cardPaymentMethodIcon)).toBeExisting ();
+
+        await browser.pause(5000);
         
         // Message to the driver
         const messageToTheDriverField = await $(page.messageToTheDriverField);
         await messageToTheDriverField.waitForDisplayed();
         await messageToTheDriverField.setValue('hi guys');
+        await expect(await $(messageToTheDriverField)).toBeExisting ();
 
+        await browser.pause(5000);
 
         // Ordering a Blanket and handkerchiefs
         const blanketAndHandkerchiefsButton = await $(page.blanketAndHandkerchiefsButton);
         await blanketAndHandkerchiefsButton.waitForDisplayed();
         await blanketAndHandkerchiefsButton.click();
+        await expect(await $(blanketAndHandkerchiefsButton)).toBeExisting ();
+
+        await browser.pause(5000);
 
         // Ordering 2 ice creams
         const increaseIceCreamCount = await $(page.increaseIceCreamCount);
@@ -51,14 +62,19 @@ describe('Create an order', () => {
         await increaseIceCreamCount.click();
         await increaseIceCreamCount.waitForDisplayed();
         await increaseIceCreamCount.click();
+        await expect(await $(increaseIceCreamCount)).toBeExisting ();
 
+        await browser.pause(5000);
 
         // Search for a ride button
         const searchForNewTaxiButton = await $(page.searchForNewTaxiButton);
         await searchForNewTaxiButton.waitForDisplayed();
         await searchForNewTaxiButton.click();
+        await expect(await $(searchForNewTaxiButton)).toBeExisting ();
 
-        await browser.pause(2000);
+        await browser.pause(5000);
+        
+        
 
 
     })
